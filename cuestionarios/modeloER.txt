@@ -1,0 +1,43 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table Pregunta {
+  id  integer [primary key]
+  texto tinytext
+  correcta integer
+  resp_1 tinytext
+  resp_2 tinytext
+  resp_3 tinytext
+  resp_4 tinytext
+  id_cuestionario integer [ref: > Cuestionario.id ]
+  }
+
+  Table Cuestionario {
+    id integer [primary key]
+    id_tema integer [ref: > Tema.id ]
+    titulo varchar(40)
+  }
+
+
+Table Tema {
+  id integer [primary key]
+  nombre tinytext
+}
+
+Table Respuesta {
+  respuesta integer
+  id_usuario integer [ref: > Usuario.id ]
+  id_pregunta integer  [ref: > Pregunta.id ]
+}
+
+Table Usuario {
+  id integer [primary key]
+  correo varchar(40)
+  contrasena varchar(20)
+  id_rol integer [ref: > Rol.id ]
+}
+
+Table Rol{
+  id integer [primary key]
+  nombre varchar(20)
+}

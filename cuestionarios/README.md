@@ -1,0 +1,12 @@
+Información extraída de [HolisticsBlog](https://www.holistics.io/blog/top-5-free-database-diagram-design-tools/) 
+
+1. [dbdiagram.io](https://dbdiagram.io/home)
+2. [Diagrams.net (formerly Draw.io)](https://app.diagrams.net/)
+3. [Lucidchart](https://www.lucidchart.com/pages/)
+4. [QuickDBD](https://www.quickdatabasediagrams.com/)
+5. [ERDPlus](https://erdplus.com/)
+6. [Cacoo](https://nulab.com/cacoo/examples/database-diagrams-er-diagram-tool/)
+7. [Drawsql.app](https://drawsql.app/)
+8. [Miro](https://miro.com/)
+9. [gliffy](https://www.gliffy.com/solutions/diagrams-for-software-engineering)
+10. [Creately](https://creately.com/)

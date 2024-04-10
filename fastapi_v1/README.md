@@ -33,3 +33,21 @@ uvicorn app:app --port 8210
 
 [FastAPI user guide](https://fastapi.tiangolo.com/tutorial/)
 
+
+
+# Probar la aplicación 
+Una vez que el servidor esté en funcionamiento, puedes abrir un navegador web o utilizar herramientas como curl o Postman para acceder a la URL http://localhost:8210 y verás la respuesta 
+```
+¡Hola Mundo!
+```
+
+
+
+
+
+
+
+
+
+
+

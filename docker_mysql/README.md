@@ -130,4 +130,9 @@ https://github.com/josejuansanchez/docker-compose-playground/tree/master
 
 
 Descargar bases de datos de ejemplo en: 
-`https://github.com/bbrumm/databasestar.git`
+[https://github.com/bbrumm/databasestar.git](https://github.com/bbrumm/databasestar/tree/main)
+
+usar el comando git de la siguiente manera:
+```bash
+git clone https://github.com/bbrumm/databasestar.git
+```

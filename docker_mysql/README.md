@@ -19,6 +19,7 @@ services:
       - MYSQL_PASSWORD=password
     volumes:
       - mysql_data:/var/lib/mysql
+      - /home/usuario/databasestar:/databasestar
 
   phpmyadmin:
     image: phpmyadmin
@@ -121,3 +122,12 @@ source .env
 Más ejemplos en:
 
 https://github.com/josejuansanchez/docker-compose-playground/tree/master
+
+
+
+
+
+
+
+Descargar bases de datos de ejemplo en: 
+`https://github.com/bbrumm/databasestar.git`

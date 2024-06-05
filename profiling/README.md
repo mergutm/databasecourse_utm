@@ -86,4 +86,21 @@ SELECT BENCHMARK (100000000,
 )
 ```
 
+# BD olympics
+
+Haciendo una consulta para obtener los participantes de los juegos y país que representan
+
+```sql
+SELECT p.id, p.full_name, nr.noc, nr.region_name
+FROM person AS p
+LEFT JOIN person_region as pr ON p.id = pr.person_id
+LEFT JOIN noc_region as nr ON  pr.region_id = nr.id
+```
+
+```sql
+SELECT p.id, p.full_name, nr.noc, nr.region_name
+FROM person AS p, person_region as pr , noc_region as nr 
+WHERE p.id = pr.person_id 
+AND pr.region_id = nr.id
+```
 

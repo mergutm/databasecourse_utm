@@ -32,7 +32,20 @@ WHERE  s.CustomerID = c.CustomerID
  |   101 |  John Doe |  john@example.com |  4.0 |  2024-06-04 |  40.0 |  2.0 |  12.5 |  3.0 |  Widget C |  12.5  | 
  |   101 |  John Doe |  john@example.com |  1.0 |  2024-06-01 |  32.5 |  1.0 |  12.5 |  3.0 |  Widget C |  12.5  | 
 
+## Otra forma de generar la misma tabla
 
+```sql
+SELECT c.CustomerID, c.CustomerName, c.Email, 
+	       s.SaleID, s.SaleDate, s.TotalAmount,
+	       si.Quantity, si.Price as Price_vta,
+	       p.ProductID, p.ProductName, p.Price as Price_db
+FROM   Customers as c
+LEFT JOIN Sales as s ON s.CustomerID = c.CustomerID
+LEFT JOIN SaleItems as si ON  si.SaleID = s.SaleID
+LEFT JOIN Products AS p on si.ProductID = p.ProductID
+```
+
+El benchmark tiene por objetivo verificar la mejor forma de hacer la consulta.
 
 ## Ejemplo de benchmark 
 

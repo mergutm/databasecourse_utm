@@ -65,3 +65,25 @@ SELECT BENCHMARK (100000000,
 	)
 )
 ```
+
+
+## Benchmark 
+Usando LEFT JOIN
+```sql
+SELECT BENCHMARK (100000000,
+      (SELECT count(*) AS cc
+       FROM   (
+        SELECT c.CustomerID, c.CustomerName, c.Email, 
+       s.SaleID, s.SaleDate, s.TotalAmount,
+       si.Quantity, si.Price as Price_vta,
+       p.ProductID, p.ProductName, p.Price as Price_db
+           FROM   Customers as c
+           LEFT JOIN Sales as s ON s.CustomerID = c.CustomerID
+           LEFT JOIN SaleItems as si ON  si.SaleID = s.SaleID
+           LEFT JOIN Products AS p on si.ProductID = p.ProductID
+       ) AS tmp
+	)
+)
+```
+
+

@@ -137,8 +137,6 @@ LEFT JOIN person as p ON p.id = SQ.person_id |
 |        2 | 0.00856600 | SELECT SQ.noc, p.full_name FROM (SELECT nr.id, nr.noc, pr.person_id  FROM  (select nr.id, nr.noc FROM noc_region as nr WHERE nr.noc like 'MEX') AS nr LEFT JOIN person_region as pr ON pr.region_id = nr.id) as SQ LEFT JOIN person as p ON p.id = SQ.person_id |
 |        3 | 0.00854575 | SELECT SQ.noc, p.full_name FROM (SELECT nr.id, nr.noc, pr.person_id  FROM  (select nr.id, nr.noc FROM noc_region as nr WHERE nr.noc like 'MEX') AS nr LEFT JOIN person_region as pr ON pr.region_id = nr.id) as SQ LEFT JOIN person as p ON p.id = SQ.person_id |
 |        4 | 0.00855350 | SELECT SQ.noc, p.full_name FROM (SELECT nr.id, nr.noc, pr.person_id  FROM  (select nr.id, nr.noc FROM noc_region as nr WHERE nr.noc like 'MEX') AS nr LEFT JOIN person_region as pr ON pr.region_id = nr.id) as SQ LEFT JOIN person as p ON p.id = SQ.person_id |
-+----------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-7 rows in set, 1 warning (0.00 sec)
 ```
 
 

@@ -71,3 +71,70 @@ CREATE TABLE empleados (
         ON UPDATE CASCADE
 );
 ```
+
+# Validación de restricciones
+
+Validación de ejemplo sobre rangos de datos enteros, de punto flotante, y fechas
+
+```sql
+CREATE TABLE empleados (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    edad INT NOT NULL,
+    salario DECIMAL(10, 2) NOT NULL,
+    fecha_contratacion DATE NOT NULL,
+    CHECK (edad BETWEEN 18 AND 65),
+    CHECK (salario >= 30000.00 AND salario <= 200000.00),
+    CHECK (fecha_contratacion >= '2000-01-01' AND fecha_contratacion <= CURRENT_DATE())
+);
+```
+
+Usando disparadores:
+```sql
+CREATE TABLE empleados (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    edad INT NOT NULL,
+    salario DECIMAL(10, 2) NOT NULL,
+    fecha_contratacion DATE NOT NULL
+);
+
+DELIMITER //
+
+CREATE TRIGGER validar_empleado_insert
+BEFORE INSERT ON empleados
+FOR EACH ROW
+BEGIN
+    IF NEW.edad < 18 OR NEW.edad > 65 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La edad debe estar entre 18 y 65 años';
+    END IF;
+    IF NEW.salario < 30000.00 OR NEW.salario > 200000.00 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El salario debe estar entre 30000.00 y 200000.00';
+    END IF;
+    IF NEW.fecha_contratacion < '2000-01-01' OR NEW.fecha_contratacion > CURDATE() THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La fecha de contratación debe estar entre 2000-01-01 y la fecha actual';
+    END IF;
+END //
+
+CREATE TRIGGER validar_empleado_update
+BEFORE UPDATE ON empleados
+FOR EACH ROW
+BEGIN
+    IF NEW.edad < 18 OR NEW.edad > 65 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La edad debe estar entre 18 y 65 años';
+    END IF;
+    IF NEW.salario < 30000.00 OR NEW.salario > 200000.00 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El salario debe estar entre 30000.00 y 200000.00';
+    END IF;
+    IF NEW.fecha_contratacion < '2000-01-01' OR NEW.fecha_contratacion > CURDATE() THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La fecha de contratación debe estar entre 2000-01-01 y la fecha actual';
+    END IF;
+END //
+
+DELIMITER ;
+
+```
+
+
+
+#

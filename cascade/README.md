@@ -29,4 +29,20 @@ INSERT INTO departamentos (dept_id, nombre) VALUES
 (2, 'TI'),
 (3, 'Finanzas');
 
-``` 
+```
+
+## Inserción de datos válidos en empleados
+
+```SQL
+INSERT INTO empleados (emp_id, nombre, dept_id) VALUES 
+(101, 'Alice', 1), 
+(102, 'Bob', 2), 
+(103, 'Charlie', 3);
+```
+
+
+## Actualización de los datos en la BD
+
+```sql
+UPDATE departamentos SET dept_id = 4 WHERE dept_id = 1;
+```

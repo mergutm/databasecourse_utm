@@ -7,7 +7,6 @@ esas claves primarias. Esto es especialmente útil para mantener la integridad r
 
 ## Creación de tablas departamentos y empleados
 ```SQL
-
 CREATE TABLE departamentos (
     dept_id INT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL
@@ -45,4 +44,30 @@ INSERT INTO empleados (emp_id, nombre, dept_id) VALUES
 
 ```sql
 UPDATE departamentos SET dept_id = 4 WHERE dept_id = 1;
+```
+
+
+
+## Actualización y eliminación en cascada
+Se pueden agregar restricciones de eliminación y actualización en cascada 
+```SQL
+ALTER TABLE empleados
+ADD CONSTRAINT fk_dept
+FOREIGN KEY (dept_id) 
+	REFERENCES departamentos(dept_id)
+ON DELETE CASCADE
+ON UPDATE CASCADE
+```
+
+o definir la tabla al momento de crearla con dichas restricciones.
+
+```SQL
+CREATE TABLE empleados (
+    emp_id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    dept_id INT,
+    FOREIGN KEY (dept_id) REFERENCES departamentos(dept_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
 ```

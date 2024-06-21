@@ -49,10 +49,12 @@ call actualizar_edad(2, 45);
 
 ### Generación de errores al borrar un id inválido
 
+Si existe un error durante la actualización (el rango según el ejemplo anterior), se genera un error.
+
 ```SQL
 DELIMITER //
 
-CREATE PROCEDURE eliminar_estudiante(IN estudiante_id INT)
+CREATE PROCEDURE actualizar_edad_estudiante(IN estudiante_id INT, IN nueva_edad INT)
 BEGIN
     DECLARE CONTINUE HANDLER FOR SQLEXCEPTION
     BEGIN
@@ -61,7 +63,7 @@ BEGIN
     END;
     
     START TRANSACTION;    
-    DELETE FROM estudiantes WHERE id = estudiante_id;    
+        UPDATE estudiantes SET edad = nueva_edad WHERE id = estudiante_id;
     COMMIT;
 END //
 DELIMITER ;

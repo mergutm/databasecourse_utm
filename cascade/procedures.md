@@ -80,12 +80,54 @@ CREATE TABLE estudiantes (
 );
 
 ```
-
+crear un procedimiento almacenado que intenta insertar 10 estudiantes y maneja las excepciones. Si ocurre una excepción, se activa un ROLLBACK.
 
 
 ```SQL
+DELIMITER //
+
+CREATE PROCEDURE insertar_estudiantes()
+BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;
+        SELECT 'Ha ocurrido un error. Se ha realizado un rollback.' AS mensaje;
+    END;
+
+    START TRANSACTION;
+
+    INSERT INTO estudiantes (nombre, edad) VALUES ('Estudiante1', 22);
+    INSERT INTO estudiantes (nombre, edad) VALUES ('Estudiante2', 25);
+    INSERT INTO estudiantes (nombre, edad) VALUES ('Estudiante3', 27);
+    INSERT INTO estudiantes (nombre, edad) VALUES ('Estudiante4', 30);
+    INSERT INTO estudiantes (nombre, edad) VALUES ('Estudiante5', 32);
+    INSERT INTO estudiantes (nombre, edad) VALUES ('Estudiante6', 35);
+    INSERT INTO estudiantes (nombre, edad) VALUES ('Estudiante7', 37);
+    INSERT INTO estudiantes (nombre, edad) VALUES ('Estudiante8', 28);
+    INSERT INTO estudiantes (nombre, edad) VALUES ('Estudiante9', 26);
+    -- Esta inserción producirá un error debido a que la edad está fuera del rango permitido (si existiera un CHECK constraint)
+    INSERT INTO estudiantes (nombre, edad) VALUES ('Estudiante10', 17);
+
+    COMMIT;
+END //
+
+DELIMITER ;
 
 
 ```
+
+## Llamar al procedimiento
+
+```SQL
+CALL insertar_estudiantes();
+
+
+```
+El procedimiento puede manejar errores durante la inserción y garantizar que no se cometan errores parciales en la base de datos.
+
+
+
+
+
 
 

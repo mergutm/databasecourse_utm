@@ -47,3 +47,37 @@ To disable autocommit mode explicitly, use the following statement:
 ```SQL
 SET autocommit=0;
 ```
+
+
+# Datos un segundo ejemplo 
+
+```
+CREATE TABLE productos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
+    cantidad INT
+);
+
+INSERT INTO productos (nombre, cantidad) VALUES
+('Producto A', 10),
+('Producto B', 15),
+('Producto C', 20);
+```
+
+ejecución de la transacción
+
+```SQL
+-- Iniciar una transacción explícita
+START TRANSACTION;
+
+-- Obtener un bloqueo de lectura exclusiva en el producto con id = 1
+SELECT cantidad  FROM productos WHERE id = 1;
+
+-- Actualizar la cantidad del producto (restar 1)
+UPDATE productos SET cantidad = cantidad - 1 WHERE id = 1;
+
+-- Confirmar la transacción
+COMMIT;
+```
+
+

@@ -98,21 +98,7 @@ La salida obtenida es:
 | Recursos humanos |
 |  Finanzas  |
 
-# 
 
+### Operador NOT EXISTS
 
-
-```sql
-
-```
-
-
-```sql
-
-```
-
-
-```sql
-
-```
-
+**NOT EXISTS**:  se utiliza para asegurarse de que no existen filas en la subconsulta que satisfagan la condición dada. 

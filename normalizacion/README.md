@@ -330,7 +330,7 @@ La segunda dependencia satisface la condición de 3FN por tener un atributo prim
 
 ---
 
-## 9. Forma Normal de Boyce-Codd (FNBC o BCNF)
+## 8. Forma Normal de Boyce-Codd (FNBC o BCNF)
 
 ### Regla de FNBC
 
@@ -398,7 +398,7 @@ La tabla `DOCENTE_CURSO` puede usar `IdDocente` como clave primaria y como clave
 
 ---
 
-## 10. Resumen visual de la secuencia
+## 9. Resumen 
 
 | Etapa | Estructura principal | Problema que se resuelve |
 |---|---|---|
@@ -408,7 +408,7 @@ La tabla `DOCENTE_CURSO` puede usar `IdDocente` como clave primaria y como clave
 | 3FN | `ESTUDIANTE`, `CURSO`, `DOCENTE`, `INSCRIPCION` | Dependencias transitivas |
 | FNBC | `ESTUDIANTE`, `CURSO`, `DOCENTE`, `DOCENTE_CURSO`, `INSCRIPCION_DOCENTE` | Dependencias cuyo determinante no es superclave |
 
-### Esquema final sugerido
+### Esquema final 
 
 ```text
 ESTUDIANTE
